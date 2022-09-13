@@ -1,19 +1,14 @@
 clear; clc;
-global alpha beta gamma delta x
-promptA = 'Input alpfa: ';
-promptB = 'Input beta: ';
-promptD = 'Input delta: ';
-promptG = 'Input gamma: ';
-prompt1 = 'Input victims: ';
-prompt2 = 'Input predators: ';
-alpha = input(promptA);
-beta = input(promptB);
-delta = input(promptD);
-gamma = input(promptG);
-x(1) = input(prompt1);
-x(2) = input(prompt2);
-[t,u] = ode45('runge', [0 5], [0;0]);
-plot(t,u(:,1),t,u(:,2)), grid;
-legend('u(1)','u(2)')
+global alpha beta gamma delta T1 T2 x0
+alpha = 0.5;
+beta = 0.6;
+delta = 0.8;
+gamma = 0.7;
+x(1) = 50;
+x(2) = 10;
+T1 = 10; T2 = 5; x0 = 5;
+[t,x] = ode45('rungeU', [0 10], [x(1) x(2)]);
+plot(t,x(:,1),t,x(:,2)), grid;
+legend('x(1)','x(2)')
 disp('Last values: ');
-disp(u(end,1:end));
+disp(x(end,1:end));
